@@ -15,7 +15,7 @@
     </mat-form-field>
 
     <p>{{nomDevoir}}</p>
-    <p>{{dateDeRendu}}</p>
+    <p >{{dateDeRendu}}</p>
 
         <button mat-stroked-button 
            style="margin-left: 10px;"
@@ -27,6 +27,8 @@
 </form>
 
 <div *ngFor="let assignment of assignments">
+    <h3 mat-subheader>{{assignment.dateDeRendu | date}}</h3>
+    <mat-list-item (click)="assignmentClique(assignment)">
     <!-- [ngClass]="{'rendu' : assignment.Rendu, 'non-rendu' : !assignment.Rendu}"> -->
     <!-- [ngStyle]="{'color' : assignment.Rendu ? 'green' : 'red'}"> -->
     <!-- <p>

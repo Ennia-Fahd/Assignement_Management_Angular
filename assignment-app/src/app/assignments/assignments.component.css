@@ -1,13 +1,13 @@
 .rendu {
-    color: green;
+    color : green;
 }
 
 .non-rendu {
-    color: red;
+    color : red;
 }
 
 .form {
-    display: flex;
+    display:flex;
     flex-direction: column;
-    margin: 5px;
-}
+    margin:5px;
+ }

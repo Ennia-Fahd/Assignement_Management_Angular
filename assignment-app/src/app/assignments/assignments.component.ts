@@ -57,6 +57,8 @@ export class AssignmentsComponent implements OnInit {
   ajoutActive = false;
   nomDevoir:string = "";
   dateDeRendu! : Date 
+  assignmentSelectionne !: Assignment;
+
   
   ngOnInit() : void {
     setTimeout(() => {
@@ -73,5 +75,9 @@ export class AssignmentsComponent implements OnInit {
     this.assignments.push(newAssignment);
   }
  
+  assignmentClique(assignment: Assignment) {
+    console.log("Assignment cliqué : " + assignment.nom);
+    this.assignmentSelectionne = assignment;
+  }
 
 }
