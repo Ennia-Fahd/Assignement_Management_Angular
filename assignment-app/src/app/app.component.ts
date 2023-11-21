@@ -9,10 +9,13 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MenuComponent } from './menu/menu.component';
+import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [MatToolbarModule,
+    AddAssignmentComponent,
     MenuComponent,
     MatListModule,
     MatSidenavModule,

@@ -12,12 +12,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { Assignment } from './assignment.model';
 import { AssignmentDetailComponent } from './assignment-detail/assignment-detail.component';
-
+import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
 
 @Component({
   selector: 'app-assignments',
   standalone: true,
   imports: [CommonModule,
+            AddAssignmentComponent,
             AssignmentDetailComponent,
             MatListModule,
             RenduDirective,
@@ -57,27 +58,15 @@ export class AssignmentsComponent implements OnInit {
       rendu : true
     }
   ]
-  ajoutActive = false;
-  nomDevoir:string = "";
-  dateDeRendu! : Date 
+
   assignmentSelectionne !: Assignment;
 
   
-  ngOnInit() : void {
-    setTimeout(() => {
-      this.ajoutActive = true;
-    }, 2000);
+  ngOnInit() {
   }
 
-  onSubmit() {
-    const newAssignment = new Assignment();
-    newAssignment.nom = this.nomDevoir;
-    newAssignment.dateDeRendu = this.dateDeRendu;
-    newAssignment.rendu = false;
-    console.log(newAssignment);
-    this.assignments.push(newAssignment);
-  }
- 
+
+
   assignmentClique(assignment: Assignment) {
     console.log("Assignment cliqué : " + assignment.nom);
     this.assignmentSelectionne = assignment;
