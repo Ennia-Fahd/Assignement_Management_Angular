@@ -25,21 +25,28 @@
     </button>
 
 </form>
+ 
 
-<div *ngFor="let assignment of assignments">
-    <h3 mat-subheader>{{assignment.dateDeRendu | date}}</h3>
-    <mat-list-item (click)="assignmentClique(assignment)">
-    <!-- [ngClass]="{'rendu' : assignment.Rendu, 'non-rendu' : !assignment.Rendu}"> -->
+    <mat-list *ngFor="let assignment of assignments">
+         <!-- [ngClass]="{'rendu' : assignment.Rendu, 'non-rendu' : !assignment.Rendu}"> -->
     <!-- [ngStyle]="{'color' : assignment.Rendu ? 'green' : 'red'}"> -->
     <!-- <p>
         Devoir intitulé {{assignment.Nom}}, à rendre le {{assignment.DateDeRendu | date: 'dd/MM/yyyy'}}, soumis par l'élève : {{assignment.Rendu}}.
     </p> -->
-    <p appRendu *ngIf="assignment.rendu; else nonsoumis">
-        Devoir intitulé {{assignment.nom}}, rendu le {{assignment.dateDeRendu | date: 'dd/MM/yyyy'}}.
-    </p>
-    <ng-template #nonsoumis>
-        <p>
-            Le devoir {{assignment.nom}} n'a pas été rendu. 
-        </p>
-    </ng-template>
-</div>
+        <h3 mat-subheader>{{assignment.dateDeRendu | date}}</h3>
+        <mat-list-item (click)="assignmentClique(assignment)">
+            <p appRendu *ngIf="assignment.rendu else nonsoumis">
+                Le devoir {{assignment.nom}} a été rendu. 
+            </p>
+            <ng-template #nonsoumis>
+                <p>
+                    Le devoir {{assignment.nom}} n'a pas encore été rendu.
+                </p>    
+            </ng-template>
+            <mat-divider> </mat-divider>
+        </mat-list-item>
+    </mat-list>
+
+    <app-assignment-detail [assignmentTransmis]="assignmentSelectionne">
+
+    </app-assignment-detail>

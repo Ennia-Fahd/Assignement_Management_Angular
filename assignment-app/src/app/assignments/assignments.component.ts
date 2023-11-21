@@ -7,16 +7,19 @@ import { MatDividerModule } from '@angular/material/divider'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms'
-
+import { MatListModule } from '@angular/material/list'; 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { Assignment } from './assignment.model';
+import { AssignmentDetailComponent } from './assignment-detail/assignment-detail.component';
 
 
 @Component({
   selector: 'app-assignments',
   standalone: true,
   imports: [CommonModule,
+            AssignmentDetailComponent,
+            MatListModule,
             RenduDirective,
             MatButtonModule,
             MatDividerModule,
