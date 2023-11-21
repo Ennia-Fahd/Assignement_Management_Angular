@@ -30,22 +30,5 @@ section {
     width: 120px;
   }
 
-  .example-spacer {
-    flex: 1 1 auto;
-  }
-  
-
-  /* sidenav.component.css */
-.sidenav-container {
-  height: 100%;
-}
-
-mat-sidenav {
-  width: 200px;
-}
-
-.content {
-  padding: 20px;
-}
-
+ 
   

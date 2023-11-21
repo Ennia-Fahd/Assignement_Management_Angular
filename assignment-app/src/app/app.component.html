@@ -1,54 +1,6 @@
-<mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon >menu</mat-icon>
-    </button>
-    <span>My App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
-
-  <!-- sidenav.component.html -->
-<mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav mode="side" opened>
-      <mat-toolbar color="primary">Menu</mat-toolbar>
-      <mat-nav-list>
-        <a mat-list-item >Home</a>
-        <a mat-list-item >Dashboard</a>
-        <a mat-list-item >Settings</a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <mat-toolbar color="primary">
-        <button mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>My App</span>
-      </mat-toolbar>
-      <div class="content">
-        <!-- Your main content goes here -->
-        <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
+<app-menu>
+    <app-assignments class="content"></app-assignments>
+</app-menu>
 
 
-
-<H1>Hello World</H1>
-
-<button mat-button color="primary">Click me!</button>
-
-<mat-divider></mat-divider>
-
-<button mat-stroked-button color="accent">Accent</button>
-
-<app-assignments></app-assignments>
-
-
-  
 
