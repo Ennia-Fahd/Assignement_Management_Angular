@@ -60,12 +60,15 @@ export class AssignmentsComponent implements OnInit {
   ]
 
   assignmentSelectionne !: Assignment;
+  formVisible = false;
 
   
   ngOnInit() {
   }
 
-
+  onAddAssignmentBtnClick() {
+    this.formVisible = true;
+  }
 
   assignmentClique(assignment: Assignment) {
     console.log("Assignment cliqué : " + assignment.nom);
