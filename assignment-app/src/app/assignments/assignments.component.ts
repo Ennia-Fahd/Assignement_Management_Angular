@@ -74,5 +74,9 @@ export class AssignmentsComponent implements OnInit {
     console.log("Assignment cliqué : " + assignment.nom);
     this.assignmentSelectionne = assignment;
   }
+  onNouvelAssignment(event: Assignment) {
+    this.assignments.push(event);
+    this.formVisible = false;
+  }
 
 }

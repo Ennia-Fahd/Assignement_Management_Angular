@@ -1,7 +1,7 @@
 <p>Titre = {{titre}}</p>
 
-<main *ngIf="!formVisible">
-<button mat-flat-button color="accent" (click)="onAddAssignmentBtnClick()">   
+<main class="container" *ngIf="!formVisible">
+<button class="ajouterBtn" mat-flat-button color="accent" (click)="onAddAssignmentBtnClick()" >   
        Ajouter Assignment
 </button>
 
@@ -32,4 +32,5 @@
     </app-assignment-detail>
 </main>
 
-<app-add-assignment *ngIf="formVisible"></app-add-assignment>
+<app-add-assignment *ngIf="formVisible" (nouvelAssignment)="onNouvelAssignment($event)">
+</app-add-assignment>
