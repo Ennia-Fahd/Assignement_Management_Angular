@@ -13,6 +13,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { Assignment } from './assignment.model';
 import { AssignmentDetailComponent } from './assignment-detail/assignment-detail.component';
 import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
+import { AssignmentsService } from '../shared/assignments.service';
+
+
 
 @Component({
   selector: 'app-assignments',
@@ -34,36 +37,16 @@ import { AddAssignmentComponent } from './add-assignment/add-assignment.componen
   styleUrl: './assignments.component.css'
 })
 
-export class AssignmentsComponent implements OnInit {
-  
-  titre : String = 'Mon app sur les assignments :)';
-  assignments:Assignment[] = [
-    { nom : 'TP1 sur Angular',
-      dateDeRendu : new Date('2023-11-20'),
-      rendu : true
-    },
-    {
-      nom : 'TP2 sur Scrum',
-      dateDeRendu : new Date('2023-09-10'),
-      rendu : false      
-    },
-    {
-      nom : 'TP3 sur Grails',
-      dateDeRendu : new Date('2023-10-15'),
-      rendu : false
-    },
-    {
-      nom : 'TP4 sur Groovy',
-      dateDeRendu : new Date('2023-10-16'),
-      rendu : true
-    }
-  ]
-
+export class AssignmentsComponent implements OnInit{
+  titre : String = 'Les Assignments de Leo Donati';
+  formVisible : boolean = false;
   assignmentSelectionne !: Assignment;
-  formVisible = false;
+  assignments !: Assignment[] ;
 
-  
+  constructor( private assignmentsService: AssignmentsService) { }
+
   ngOnInit() {
+    this.assignments = this.assignmentsService.getAssignments();
   }
 
   onAddAssignmentBtnClick() {
@@ -74,9 +57,9 @@ export class AssignmentsComponent implements OnInit {
     console.log("Assignment cliqué : " + assignment.nom);
     this.assignmentSelectionne = assignment;
   }
+
   onNouvelAssignment(event: Assignment) {
     this.assignments.push(event);
     this.formVisible = false;
   }
-
 }
