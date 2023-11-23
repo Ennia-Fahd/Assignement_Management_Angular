@@ -46,7 +46,7 @@ export class AssignmentsComponent implements OnInit{
   constructor( private assignmentsService: AssignmentsService) { }
 
   ngOnInit() {
-    this.assignments = this.assignmentsService.getAssignments();
+    this.getAssignement();
   }
 
   onAddAssignmentBtnClick() {
@@ -61,5 +61,9 @@ export class AssignmentsComponent implements OnInit{
   onNouvelAssignment(event: Assignment) {
     this.assignments.push(event);
     this.formVisible = false;
+  }
+
+  getAssignement(){
+    this.assignmentsService.getAssignments().subscribe(assignments =>this.assignments = assignments);
   }
 }
