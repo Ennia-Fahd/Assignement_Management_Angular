@@ -58,12 +58,20 @@ export class AssignmentsComponent implements OnInit{
     this.assignmentSelectionne = assignment;
   }
 
-  onNouvelAssignment(event: Assignment) {
-    this.assignments.push(event);
+  onNouvelAssignment(assignment: Assignment) {
+    //this.assignments.push(event)
+    this.assignmentsService.addAssignment(assignment).
+      subscribe(
+        message => {
+          console.log(message);
+        }
+      );
     this.formVisible = false;
   }
 
   getAssignement(){
     this.assignmentsService.getAssignments().subscribe(assignments =>this.assignments = assignments);
   }
+
+ 
 }
