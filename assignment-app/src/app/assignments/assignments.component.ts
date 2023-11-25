@@ -1,56 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RenduDirective } from '../shared/rendu.directive'
+import { OnInit } from '@angular/core';
 
-import { MatButtonModule } from '@angular/material/button'
-import { MatDividerModule } from '@angular/material/divider'
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms'
-import { MatListModule } from '@angular/material/list'; 
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { RenduDirective } from '../shared/rendu.directive';
 import { Assignment } from './assignment.model';
 import { AssignmentDetailComponent } from './assignment-detail/assignment-detail.component';
 import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
-import { AssignmentsService } from '../shared/assignments.service';
 
+import { MatListModule } from '@angular/material/list'; 
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { AssignementsService } from '../shared/assignements.service';
+import { Observable,of } from 'rxjs';
+import { RouterLink } from '@angular/router';
+import { AuthService } from '../shared/auth.service';
+import { AdminTemplateComponent } from '../admin-template/admin-template.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 @Component({
   selector: 'app-assignments',
   standalone: true,
-  imports: [CommonModule,
-            AddAssignmentComponent,
-            AssignmentDetailComponent,
-            MatListModule,
-            RenduDirective,
-            MatButtonModule,
-            MatDividerModule,
-            MatFormFieldModule,
-            MatDatepickerModule,
-            MatInputModule,
-            MatNativeDateModule,
-            FormsModule
-          ],
+  imports: [CommonModule,MatTableModule,AdminTemplateComponent,RenduDirective, MatListModule, MatDividerModule, AssignmentDetailComponent, AddAssignmentComponent, MatButtonModule ,RouterLink ],
   templateUrl: './assignments.component.html',
   styleUrl: './assignments.component.css'
 })
-
 export class AssignmentsComponent implements OnInit{
-  titre : String = 'Les Assignments de Leo Donati';
   formVisible : boolean = false;
   assignmentSelectionne !: Assignment;
-  assignments !: Assignment[] ;
 
-  constructor( private assignmentsService: AssignmentsService) { }
+  assignments !: Assignment[];
+  displayedColumns: string[] = ['No', 'Devoir', 'Date','Rendu','Action'];
 
+  constructor(private assignmentsService:AssignementsService,public authService:AuthService){
+  }
+   
   ngOnInit() {
-    this.getAssignement();
+    //this.assignments=this.assignmentsService.getAssignments();
+    this.getAssignments();
+  }
+  getAssignments(){
+    this.assignmentsService.getAssignments()
+    .subscribe(assignments=>this.assignments=assignments)
   }
 
-  onAddAssignmentBtnClick() {
-    this.formVisible = true;
+
+  onAddAssignment() {
+    //this.formVisible = true;
   }
 
   assignmentClique(assignment: Assignment) {
@@ -58,20 +54,12 @@ export class AssignmentsComponent implements OnInit{
     this.assignmentSelectionne = assignment;
   }
 
-  onNouvelAssignment(assignment: Assignment) {
-    //this.assignments.push(event)
-    this.assignmentsService.addAssignment(assignment).
-      subscribe(
-        message => {
-          console.log(message);
-        }
-      );
+  /*onNouvelAssignment(event: Assignment) {
+    //this.assignments.push(event);
+    this.assignmentsService.addAssignment(event)
+    .subscribe(message => console.log(message));
+      
     this.formVisible = false;
   }
-
-  getAssignement(){
-    this.assignmentsService.getAssignments().subscribe(assignments =>this.assignments = assignments);
-  }
-
- 
+  */
 }

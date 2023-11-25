@@ -1,0 +1,20 @@
+#bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.full-height-sidenav {
+   
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  
+  mat-checkbox{
+    margin-right: 60px;
+  }

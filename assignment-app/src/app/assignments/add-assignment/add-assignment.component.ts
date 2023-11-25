@@ -6,10 +6,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
-import { Output, EventEmitter } from '@angular/core';
+//import { Output, EventEmitter } from '@angular/core';
 
 
 import { Assignment } from '../assignment.model';
+import { AssignementsService } from '../../shared/assignements.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../shared/auth.service';
 
 @Component({
   selector: 'app-add-assignment',
@@ -19,19 +22,26 @@ import { Assignment } from '../assignment.model';
   styleUrl: './add-assignment.component.css'
 })
 export class AddAssignmentComponent {
-  @Output() nouvelAssignment = new EventEmitter<Assignment>();
+  //@Output() nouvelAssignment = new EventEmitter<Assignment>();
   nomDevoir : String = '';
   dateDeRendu : Date = new Date();
 
-  onSubmit() {
-    console.log("Ajout de assignment " + this.nomDevoir);
+  constructor(private assignmentsService: AssignementsService, private router: Router) { }
 
+  onSubmit() {
     const newAssigment : Assignment = new Assignment();
     newAssigment.nom = this.nomDevoir;
     newAssigment.dateDeRendu = this.dateDeRendu;
     newAssigment.rendu = false;
 
     //this.assignments.push(newAssigment);
-    this.nouvelAssignment.emit(newAssigment);
+    //this.nouvelAssignment.emit(newAssigment);
+    this.assignmentsService.addAssignment(newAssigment)
+      .subscribe(
+        message => {
+          console.log(message);
+          this.router.navigate(['/admin/home']);
+        }
+      );
   }
 }

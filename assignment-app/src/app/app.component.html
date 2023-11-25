@@ -1,4 +1,22 @@
-<app-menu></app-menu>
 
-
-
+<mat-toolbar color="primary" class="navbar"  *ngIf="!authService.isAuthenticated()">
+   <button mat-icon-button aria-label="Home" routerLink="/admin/home">
+     <mat-icon>home</mat-icon>
+   </button>
+   <span>StudySprint</span>
+   <span class="spacer"></span>
+   <button mat-icon-button aria-label="Login" routerLink="/login" class="right-icon">
+     <mat-icon>person</mat-icon>
+   </button>
+ </mat-toolbar>
+ 
+ <mat-sidenav-container >
+   <h1 *ngIf="!authService.isAuthenticated()">
+     <nav><a routerLink="/admin/home">{{title}}</a></nav>
+   </h1>
+   <router-outlet></router-outlet>
+ </mat-sidenav-container>
+   
+   
+      
+   <router-outlet></router-outlet>

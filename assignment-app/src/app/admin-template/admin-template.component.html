@@ -1,0 +1,58 @@
+<mat-toolbar color="primary" class="navbar" >
+    <button mat-icon-button (click)="toggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button mat-icon-button routerLink="/admin/home" >
+      <mat-icon>home</mat-icon>
+    </button>
+    <span>StudySprint</span>
+    <span class="spacer"></span>
+    <img width="80px;" src="../../assets/pic_admin.png">
+    <button mat-icon-button aria-label="Login" class="right-icon" *ngIf="!authService.autenticatedUser">
+      <mat-icon>person</mat-icon>
+    </button>
+    <ul>
+      <li>{{authService.autenticatedUser!.username}}</li>
+      <li>
+        <button (click)="handleLougout()" class="logout" mat-flat-button color="picker">
+        Logout
+      </button>
+    </li>
+  
+    </ul>
+
+  </mat-toolbar>
+  
+  <mat-sidenav-container >
+    <mat-sidenav #sidenav mode="side" class="sidenav" *ngIf="authService.isAdmin()">
+      <mat-nav-list *ngIf="authService.isAdmin()">
+        <a mat-list-item routerLink="/admin/home" (click)="closeSidenav()"> 
+          <mat-icon>assignment</mat-icon>
+          <span>Liste des devoirs</span>
+        </a>
+        <a mat-list-item routerLink="/admin/add" (click)="closeSidenav()"> 
+          <mat-icon>add</mat-icon>
+          <span>Ajout d'un devoir</span>
+        </a>
+        <a mat-list-item  (click)="closeSidenav()"> 
+          <mat-icon>edit</mat-icon>
+          <span>Modification d'un devoir</span>
+        </a>
+        <a mat-list-item (click)="closeSidenav()"> 
+          <mat-icon>delete</mat-icon>
+          <span>Suppression d'un devoir</span>
+        </a>
+        <a mat-list-item (click)="closeSidenav()"> 
+          <mat-icon>build</mat-icon>
+          <span>Génération de données de test</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <h1>
+      <nav><a routerLink="/admin/home">{{title}}</a></nav>
+    </h1>
+    <router-outlet></router-outlet>
+  </mat-sidenav-container>
+    
+    
+       

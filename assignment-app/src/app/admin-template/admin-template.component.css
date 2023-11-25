@@ -1,5 +1,12 @@
-.sidenav-container {
+
+
+
+  .sidenav-container {
     height: 100%;
+  
+  }
+  mat-sidenav-container{
+    min-height: 400px;
   }
   
   mat-sidenav {
@@ -7,7 +14,7 @@
   }
   
   .content {
-    padding: 20px;
+    padding: 25px;
   }
   
   mat-toolbar {
@@ -29,4 +36,24 @@
     padding: 10px; /* Adjust as needed */
     text-decoration: none; /* Remove underlines from links */
     color: inherit; /* Inherit text color from parent */
+  }
+
+  h1{
+    margin-left: 15px;
+  }
+  ul {
+  margin-right: 10px;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  .logout{
+    margin-bottom: 7px;
+   
+  }
+
+  img{
+    padding-left: 100px;
   }

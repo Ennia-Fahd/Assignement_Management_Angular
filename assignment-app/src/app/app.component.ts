@@ -1,35 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import {AssignmentsComponent } from './assignments/assignments.component';
+import { AssignmentsComponent } from './assignments/assignments.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MenuComponent } from './menu/menu.component';
-import { AddAssignmentComponent } from './assignments/add-assignment/add-assignment.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { RouterLink, RouterOutlet , Router } from '@angular/router';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AuthService } from './shared/auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdminTemplateComponent } from './admin-template/admin-template.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MatToolbarModule,
-    AddAssignmentComponent,
-    MenuComponent,
-    MatListModule,
-    MatSidenavModule,
-    MatButtonModule, 
-    MatIconModule,
-    CommonModule, 
-    RouterOutlet, 
-    MatButtonModule, 
-    MatDividerModule, 
-    AssignmentsComponent,
-    ],
+  imports: [CommonModule, MatButtonModule,AdminTemplateComponent, MatDividerModule, AssignmentsComponent , MatToolbarModule , MatIconModule, MatSidenavModule , MatListModule, RouterLink,RouterOutlet,MatSlideToggleModule,ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'assignment-app';
+  title = 'StudySprint: Votre application de gestion des devoirs à rendre';
+
+    constructor(public authService:AuthService){
+    }
 }
