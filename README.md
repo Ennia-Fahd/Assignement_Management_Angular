@@ -49,24 +49,3 @@ La gestion des droits a été implémentée de manière approfondie. Les adminis
 En parallèle, des services essentiels ont été ajoutés, un routage efficace entre les différentes vues de l'application a été mis en place, et une communication fluide entre les composants a été établie pour garantir une expérience utilisateur cohérente et réactive.
 
 Pour plus de détails sur chaque fonctionnalité, veuillez vous référer au code source et aux interfaces de l'application. Profitez pleinement de votre utilisation de l'application StudySprint de gestion de devoirs !
-
-## Interfaces :
-
-### Acceuil (avant  Login) 
-![Alt text](1.png)
-### Login 
-![Alt text](2.png)
-### Acceuil (aprés Login et en mode Admin) 
-![Alt text](3.png)
-![Alt text](32.png)
-### Détaille d'un devoir (Admin)
-![Alt text](4.png)
-### Ajout des devoirs (Admin)
-![Alt text](5.png)
-### Edition d'un devoir (Admin)
-![Alt text](6.png)
-### Acceuil (aprés Login et en mode User) 
-![Alt text](7.png)
-### Détaille d'un devoir (User)
-![Alt text](8.png)
-
